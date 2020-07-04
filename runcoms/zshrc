@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 #
 # Executes commands at the start of an interactive session.
 #
@@ -10,4 +11,12 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
+if [[ -s "${UZDOTS}/zshrc" ]]; then
+  source "${UZDOTS}/zshrc"
+fi
+
+# Execute code only if STDERR is bound to a TTY.
+if [[ -o INTERACTIVE && -t 2 ]]; then
+  fortune -a | cowsay -f $(ls /usr/share/cows | shuf -n1)
+  if [[ $( date +%A ) != "Friday" ]]; then echo "Its not Friday :("; else echo "Yea Friday!"; fi
+fi >&2

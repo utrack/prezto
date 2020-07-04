@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 #
 # Defines environment variables.
 #
@@ -8,4 +9,15 @@
 # Ensure that a non-login, non-interactive shell has a defined environment.
 if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
+fi
+
+export DOTSPATH=$HOME/.dotfiles
+export UZDOTSROOT=$DOTSPATH/zsh-internal
+export UZDOTS=${UZDOTSROOT}/zdots
+
+export ZSOURCED=zshenv-root:$ZSOURCED
+
+
+if [[ -s "${UZDOTS}/zshenv" ]]; then
+  source "$UZDOTS"/zshenv
 fi
