@@ -12,6 +12,7 @@
 if [[ -z "$BROWSER" && "$OSTYPE" == darwin* ]]; then
   export BROWSER='open'
 fi
+export MOZ_USE_XINPUT2=1
 
 #
 # Editors
