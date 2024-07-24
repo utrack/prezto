@@ -19,7 +19,6 @@
 
 # Execute code only if STDERR is bound to a TTY.
 if [[ -o INTERACTIVE && -t 2 ]]; then
-  export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top'
 
   # Print a random, hopefully interesting, adage.
   if (( $+commands[fortune] )); then

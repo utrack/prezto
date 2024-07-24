@@ -15,6 +15,7 @@ export UZDOTSROOT=$DOTSPATH/zsh-internal
 export UZDOTS=${UZDOTSROOT}/zdots
 
 export ZSOURCED=zshenv-root:$ZSOURCED
+export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top'
 
 
 if [[ -s "${UZDOTS}/zshenv" ]]; then
