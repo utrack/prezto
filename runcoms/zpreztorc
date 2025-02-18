@@ -41,7 +41,7 @@ zstyle ':prezto:load' pmodule \
   'history-substring-search' \
   'syntax-highlighting' \
   'autosuggestions' \
-  'tmux' \
+  #'tmux' \
   'pacman'
   #'prompt'
   #'fasd' -- replaced by zoxide
