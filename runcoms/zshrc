@@ -15,10 +15,31 @@ if [[ -s "${UZDOTS}/zshrc" ]]; then
   source "${UZDOTS}/zshrc"
 fi
 
+# https://vninja.net/2024/12/28/ghostty-workaround-for-missing-or-unsuitable-terminal-xterm-ghostty/
+if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
+    export TERM=xterm-256color
+fi
+
+ZELLIJ_AUTO_ATTACH=true
+ZELLIJ_AUTO_EXIT=true
+
 # Execute code only if STDERR is bound to a TTY.
 if [[ -o INTERACTIVE && -t 2 ]]; then
   fortune -a | cowsay -f $(ls /usr/share/cowsay/cows | shuf -n1)
   if [[ $( date +%A ) != "Friday" ]]; then echo "Its not Friday :("; else echo "Yea Friday!"; fi
+
+if [[ -z "$ZELLIJ" ]]; then
+    if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
+        zellij attach -c
+    else
+        zellij
+    fi
+
+    if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
+        exit
+    fi
+fi
+
 fi >&2
 
 if [[ -n "$SSH_ENV" ]]; then

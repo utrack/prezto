@@ -37,12 +37,13 @@ zstyle ':prezto:load' pmodule \
   'directory' \
   'spectrum' \
   'utility' \
+  'ssh' \
   'completion' \
   'history-substring-search' \
   'syntax-highlighting' \
   'autosuggestions' \
-  #'tmux' \
   'pacman'
+  
   #'prompt'
   #'fasd' -- replaced by zoxide
 
